@@ -2,18 +2,18 @@ import SwiftUI
 
 public struct LightChartView: View {
     
-    private let data: [Double]
+    @Binding var data: [Double]
     private let type: ChartType
     private let visualType: ChartVisualType
     private let offset: Double
     private let currentValueLineType: CurrentValueLineType
     
-    public init(data: [Double],
+    public init(data: Binding<[Double]>,
                 type: ChartType = .line,
                 visualType: ChartVisualType = .outline(color: .red, lineWidth: 2),
                 offset: Double = 0,
                 currentValueLineType: CurrentValueLineType = .none) {
-        self.data = data
+        self._data = data
         self.type = type
         self.visualType = visualType
         self.offset = offset
