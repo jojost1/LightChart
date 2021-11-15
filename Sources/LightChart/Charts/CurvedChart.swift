@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct CurvedChart: View {
     
-    private let data: [Double]
+    @Binding var data: [Double]
     private let frame: CGRect
     private let offset: Double
     private let type: ChartVisualType
@@ -26,17 +26,17 @@ public struct CurvedChart: View {
     ///               For example `offset: 0.2` means that the chart will occupy 80% of the upper
     ///               part of the view
     ///     - currentValueLineType: A type of current value line (`none` for no line on chart)
-    public init(data: [Double],
+    public init(data: Binding<[Double]>,
                 frame: CGRect,
                 visualType: ChartVisualType = .outline(color: .red, lineWidth: 2),
                 offset: Double = 0,
                 currentValueLineType: CurrentValueLineType = .none) {
-        self.data = data
+        self._data = data
         self.frame = frame
         self.type = visualType
         self.offset = offset
         self.currentValueLineType = currentValueLineType
-        self.points = points(forData: data,
+        self.points = points(forData: data.wrappedValue,
                              frame: frame,
                              offset: offset,
                              lineWidth: lineWidth(visualType: visualType))

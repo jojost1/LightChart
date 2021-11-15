@@ -33,7 +33,7 @@ public struct LightChartView: View {
         switch type {
             case .line:
                 return AnyView(
-                    LineChart(data: data,
+                    LineChart(data: $data,
                                          frame: frame,
                                          visualType: visualType,
                                          offset: offset,
@@ -41,7 +41,7 @@ public struct LightChartView: View {
                 )
             case .curved:
                 return AnyView(
-                    CurvedChart(data: data,
+                    CurvedChart(data: $data,
                                            frame: frame,
                                            visualType: visualType,
                                            offset: offset,
